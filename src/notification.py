@@ -33,6 +33,7 @@ from src.notification_sender import (
     Serverchan3Sender,
     TelegramSender,
     WechatSender,
+    WECHAT_IMAGE_MAX_BYTES
 )
 
 logger = logging.getLogger(__name__)
