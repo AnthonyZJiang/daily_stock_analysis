@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+飞书 发送提醒服务
+
+职责：
+1. 通过 webhook 发送飞书消息
+"""
 import logging
 from typing import Dict, Any
 import requests
@@ -12,6 +19,12 @@ logger = logging.getLogger(__name__)
 class FeishuSender:
     
     def __init__(self, config: Config):
+        """
+        初始化飞书配置
+
+        Args:
+            config: 配置对象
+        """
         self._feishu_url = getattr(config, 'feishu_webhook_url', None)
         self._feishu_max_bytes = getattr(config, 'feishu_max_bytes', 20000)
         self._webhook_verify_ssl = getattr(config, 'webhook_verify_ssl', True)

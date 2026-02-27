@@ -1,15 +1,29 @@
-import logging
+# -*- coding: utf-8 -*-
+"""
+Discord 发送提醒服务
 
+职责：
+1. 通过 webhook 或 Discord bot API 发送 Discord 消息
+"""
+import logging
 import requests
 
 from src.config import Config
 from src.formatters import chunk_content_by_max_words
 
+
 logger = logging.getLogger(__name__)
+
 
 class DiscordSender:
     
     def __init__(self, config: Config):
+        """
+        初始化 Discord 配置
+
+        Args:
+            config: 配置对象
+        """
         self._discord_config = {
             'bot_token': getattr(config, 'discord_bot_token', None),
             'channel_id': getattr(config, 'discord_main_channel_id', None),

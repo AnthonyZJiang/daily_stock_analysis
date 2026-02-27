@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+自定义 Webhook 发送提醒服务
+
+职责：
+1. 发送自定义 Webhook 消息
+"""
 import logging
 import json
 import requests
@@ -10,13 +17,18 @@ logger = logging.getLogger(__name__)
 
 
 class CustomWebhookSender:
-    
+
     def __init__(self, config: Config):
+        """
+        初始化自定义 Webhook 配置
+
+        Args:
+            config: 配置对象
+        """
         self._custom_webhook_urls = getattr(config, 'custom_webhook_urls', []) or []
         self._custom_webhook_bearer_token = getattr(config, 'custom_webhook_bearer_token', None)
         self._webhook_verify_ssl = getattr(config, 'webhook_verify_ssl', True)
-    
-    
+ 
     def send_to_custom(self, content: str) -> bool:
         """
         推送消息到自定义 Webhook

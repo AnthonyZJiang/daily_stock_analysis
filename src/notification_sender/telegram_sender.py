@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Telegram 发送提醒服务
+
+职责：
+1. 通过 Telegram Bot API 发送 文本消息
+2. 通过 Telegram Bot API 发送 图片消息
+"""
 import logging
 from typing import Optional
 import requests
@@ -13,6 +21,12 @@ logger = logging.getLogger(__name__)
 class TelegramSender:
     
     def __init__(self, config: Config):
+        """
+        初始化 Telegram 配置
+
+        Args:
+            config: 配置对象
+        """
         self._telegram_config = {
             'bot_token': getattr(config, 'telegram_bot_token', None),
             'chat_id': getattr(config, 'telegram_chat_id', None),

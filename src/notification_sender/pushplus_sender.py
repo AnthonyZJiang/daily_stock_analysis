@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+PushPlus 发送提醒服务
+
+职责：
+1. 通过 PushPlus API 发送 PushPlus 消息
+"""
 import logging
 from typing import Optional
 from datetime import datetime
@@ -12,6 +19,12 @@ logger = logging.getLogger(__name__)
 class PushplusSender:
     
     def __init__(self, config: Config):
+        """
+        初始化 PushPlus 配置
+
+        Args:
+            config: 配置对象
+        """
         self._pushplus_token = getattr(config, 'pushplus_token', None)
         self._pushplus_topic = getattr(config, 'pushplus_topic', None)
         

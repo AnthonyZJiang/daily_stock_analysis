@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Wechat 发送提醒服务
+
+职责：
+1. 通过企业微信 Webhook 发送文本消息
+2. 通过企业微信 Webhook 发送图片消息
+"""
 import logging
 import base64
 import hashlib
@@ -16,6 +24,12 @@ WECHAT_IMAGE_MAX_BYTES = 2 * 1024 * 1024
 class WechatSender:
     
     def __init__(self, config: Config):
+        """
+        初始化企业微信配置
+
+        Args:
+            config: 配置对象
+        """
         self._wechat_url = config.wechat_webhook_url
         self._wechat_max_bytes = getattr(config, 'wechat_max_bytes', 4000)
         self._wechat_msg_type = getattr(config, 'wechat_msg_type', 'markdown')

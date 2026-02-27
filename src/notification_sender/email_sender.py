@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Email 发送提醒服务
+
+职责：
+1. 通过 SMTP 发送 Email 消息
+"""
 import logging
 from typing import Optional, List
 from datetime import datetime
@@ -43,6 +50,12 @@ SMTP_CONFIGS = {
 class EmailSender:
     
     def __init__(self, config: Config):
+        """
+        初始化 Email 配置
+
+        Args:
+            config: 配置对象
+        """
         self._email_config = {
             'sender': config.email_sender,
             'sender_name': getattr(config, 'email_sender_name', 'daily_stock_analysis股票分析助手'),

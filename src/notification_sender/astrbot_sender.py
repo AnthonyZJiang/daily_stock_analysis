@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+AstrBot 发送提醒服务
+
+职责：
+1. 通过 Astrbot API 发送 AstrBot 消息
+"""
 import logging
 import json
 import hmac
@@ -14,6 +21,12 @@ logger = logging.getLogger(__name__)
 class AstrbotSender:
     
     def __init__(self, config: Config):
+        """
+        初始化 AstrBot 配置
+
+        Args:
+            config: 配置对象
+        """
         self._astrbot_config = {
             'astrbot_url': getattr(config, 'astrbot_url', None),
             'astrbot_token': getattr(config, 'astrbot_token', None),

@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Pushover 发送提醒服务
+
+职责：
+1. 通过 Pushover API 发送 Pushover 消息
+"""
 import logging
 from typing import Optional
 from datetime import datetime
@@ -13,6 +20,12 @@ logger = logging.getLogger(__name__)
 class PushoverSender:
     
     def __init__(self, config: Config):
+        """
+        初始化 Pushover 配置
+
+        Args:
+            config: 配置对象
+        """
         self._pushover_config = {
             'user_key': getattr(config, 'pushover_user_key', None),
             'api_token': getattr(config, 'pushover_api_token', None),
